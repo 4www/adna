@@ -1,0 +1,212 @@
+.nav {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 2rem;
+  z-index: 101;
+  transition: opacity 0.3s ease;
+
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+// Hamburger menu
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 102;
+
+  .line {
+    width: 25px;
+    height: 2px;
+    background-color: #ffffff;
+    margin: 3px 0;
+    transition: all 0.3s ease;
+  }
+
+  // Animated hamburger to X
+  .line.open:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .line.open:nth-child(2) {
+    opacity: 0;
+  }
+
+  .line.open:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+  }
+}
+
+// Full-screen menu overlay with blur
+.menuOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(0px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.4s ease,
+    backdrop-filter 0.4s ease,
+    background-color 0.4s ease;
+  z-index: 100;
+
+  &.open {
+    opacity: 1;
+    pointer-events: auto;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+  }
+
+  // Horizontal mode (desktop before scroll)
+  &.horizontal {
+    position: static;
+    background: none;
+    backdrop-filter: none;
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 2rem;
+
+  li {
+    margin: 0;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: none;
+
+    // Only animate when menu is open
+    .menuOverlay.open & {
+      animation: fadeInDown 0.4s ease forwards;
+    }
+
+    // Horizontal mode: always visible
+    .menuOverlay.horizontal & {
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+  }
+
+  a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+// Staggered fade-in animation for menu items
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Desktop: show horizontal menu when at top
+@media (min-width: 769px) {
+  .nav {
+    position: static;
+  }
+
+  // Hamburger hidden by default on desktop
+  .hamburger {
+    display: none;
+  }
+
+  // Horizontal menu styling
+  .menuOverlay.horizontal {
+    .navList {
+      flex-direction: row;
+      gap: 2rem;
+      padding: 0;
+
+      a {
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  // When scrolled: show hamburger, use overlay mode
+  .nav.scrolled {
+    .hamburger {
+      display: flex;
+    }
+
+    // Reset to full-screen overlay mode
+    .menuOverlay {
+      position: fixed;
+      opacity: 0;
+      pointer-events: none;
+      background-color: rgba(0, 0, 0, 0);
+      backdrop-filter: blur(0px);
+
+      &.open {
+        opacity: 1;
+        pointer-events: auto;
+        background-color: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+      }
+
+      &.horizontal {
+        // Override horizontal mode when scrolled
+        position: fixed;
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+
+    .navList {
+      flex-direction: column;
+      gap: 2rem;
+      padding: 2rem;
+
+      li {
+        opacity: 0;
+        transform: translateY(-20px);
+
+        .menuOverlay.open & {
+          animation: fadeInDown 0.4s ease forwards;
+        }
+      }
+
+      a {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}

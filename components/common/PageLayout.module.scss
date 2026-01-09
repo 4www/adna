@@ -1,0 +1,55 @@
+.page {
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding-top: 6rem; // Space for mobile header
+}
+
+.pageContent {
+  min-height: calc(100vh - 6rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding: 2rem;
+  //   background-color: rgba(0, 0, 0, 0.3);
+
+  h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  p {
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  }
+}
+
+// Desktop adjustments
+@media (min-width: 769px) {
+  .page {
+    padding-top: 11rem; // Space for taller desktop header (~10.5rem rounded up)
+  }
+
+  .pageContent {
+    min-height: calc(100vh - 11rem);
+  }
+}
+
+// Mobile adjustments
+@media (max-width: 768px) {
+  .pageContent {
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+    }
+  }
+}
