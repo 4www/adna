@@ -6,7 +6,6 @@ import styles from "./Navigation.module.scss";
 import type { NavigationItem } from "@/lib/content";
 
 interface NavigationProps {
-  isScrolled?: boolean;
   isDesktop?: boolean;
   showHamburger?: boolean;
   showHorizontalMenu?: boolean;
@@ -14,7 +13,6 @@ interface NavigationProps {
 }
 
 const Navigation = ({
-  isScrolled = false,
   isDesktop = false,
   showHamburger = true,
   showHorizontalMenu = false,
@@ -41,7 +39,7 @@ const Navigation = ({
 
   return (
     <nav
-      className={`${styles.nav} ${isScrolled ? styles.scrolled : ""} ${
+      className={`${styles.nav} ${
         !showHamburger && !showHorizontalMenu ? styles.hidden : ""
       }`}
       style={navStyle}
