@@ -27,6 +27,25 @@ export interface PageContent {
   body?: string[];
 }
 
+export interface Show {
+  date: string;
+  venue: string;
+  note?: string;
+  location: string;
+  ticketsUrl: string;
+  ticketsLabel?: string;
+  soldOut?: boolean;
+}
+
+export interface Album {
+  title: string;
+  type: string;
+  year: number;
+  coverImage: string;
+  caption: string;
+  link: string;
+}
+
 const contentRoot = path.join(process.cwd(), "content");
 
 const readJson = async <T>(relativePath: string): Promise<T> => {
@@ -59,4 +78,32 @@ export const getSocialLinks = async (): Promise<SocialLink[]> => {
 
 export const getPageContent = async (slug: string): Promise<PageContent> => {
   return readJson<PageContent>(`pages/${slug}.json`);
+};
+
+export const getShows = async (): Promise<Show[]> => {
+  const showsDir = path.join(contentRoot, "shows");
+  const entries = await fs.readdir(showsDir, { withFileTypes: true });
+  const showFiles = entries
+    .filter((entry) => entry.isFile() && entry.name.endsWith(".json"))
+    .map((entry) => entry.name);
+
+  const shows = await Promise.all(
+    showFiles.map((file) => readJson<Show>(path.join("shows", file)))
+  );
+
+  return shows.sort((a, b) => a.date.localeCompare(b.date));
+};
+
+export const getAlbums = async (): Promise<Album[]> => {
+  const albumsDir = path.join(contentRoot, "albums");
+  const entries = await fs.readdir(albumsDir, { withFileTypes: true });
+  const albumFiles = entries
+    .filter((entry) => entry.isFile() && entry.name.endsWith(".json"))
+    .map((entry) => entry.name);
+
+  const albums = await Promise.all(
+    albumFiles.map((file) => readJson<Album>(path.join("albums", file)))
+  );
+
+  return albums.sort((a, b) => b.year - a.year);
 };

@@ -21,6 +21,37 @@ collections:
         name: "body"
         widget: "list"
         field: { name: "line", label: "Line", widget: "string" }
+  - name: "shows"
+    label: "Shows"
+    label_singular: "Show"
+    folder: "content/shows"
+    create: true
+    extension: "json"
+    format: "json"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { name: "date", label: "Date", widget: "datetime", time_format: false }
+      - { name: "venue", label: "Venue", widget: "string" }
+      - { name: "note", label: "Note", widget: "string", required: false }
+      - { name: "location", label: "Location", widget: "string" }
+      - { name: "ticketsUrl", label: "Tickets URL", widget: "string" }
+      - { name: "ticketsLabel", label: "Tickets Label", widget: "string" }
+      - { name: "soldOut", label: "Sold Out", widget: "boolean", required: false }
+  - name: "albums"
+    label: "Albums"
+    label_singular: "Album"
+    folder: "content/albums"
+    create: true
+    extension: "json"
+    format: "json"
+    slug: "{{slug}}"
+    fields:
+      - { name: "title", label: "Title", widget: "string" }
+      - { name: "type", label: "Type", widget: "string" }
+      - { name: "year", label: "Year", widget: "number", value_type: "int" }
+      - { name: "coverImage", label: "Cover Image", widget: "image" }
+      - { name: "caption", label: "Caption", widget: "string" }
+      - { name: "link", label: "Listen/Buy Link", widget: "string" }
   - name: "settings"
     label: "Settings"
     files:
