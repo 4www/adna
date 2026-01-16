@@ -1,4 +1,5 @@
 import PageLayout from "@/components/common/PageLayout";
+import SocialLinks from "@/components/common/SocialLinks";
 import { getContacts, getPageContent } from "@/lib/content";
 import styles from "./Contact.module.scss";
 
@@ -32,6 +33,9 @@ export default async function Contact() {
             </li>
           ))}
         </ul>
+        <div className={styles.contact__social}>
+          <SocialLinks />
+        </div>
       </div>
     </PageLayout>
   );
