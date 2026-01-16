@@ -9,6 +9,8 @@ collections:
   - name: "pages"
     label: "Pages"
     label_singular: "Page"
+    editor:
+      preview: false
     folder: "content/pages"
     create: false
     extension: "json"
@@ -24,6 +26,8 @@ collections:
   - name: "shows"
     label: "Shows"
     label_singular: "Show"
+    editor:
+      preview: false
     folder: "content/shows"
     create: true
     extension: "json"
@@ -40,6 +44,8 @@ collections:
   - name: "albums"
     label: "Albums"
     label_singular: "Album"
+    editor:
+      preview: false
     folder: "content/albums"
     create: true
     extension: "json"
@@ -51,9 +57,30 @@ collections:
       - { name: "year", label: "Year", widget: "number", value_type: "int" }
       - { name: "coverImage", label: "Cover Image", widget: "image" }
       - { name: "caption", label: "Caption", widget: "string" }
-      - { name: "link", label: "Listen/Buy Link", widget: "string" }
+      - { name: "link", label: "Listen/Buy Link", widget: "string", required: false }
+  - name: "singles"
+    label: "Singles & EPs"
+    label_singular: "Single/EP"
+    editor:
+      preview: false
+    folder: "content/singles"
+    create: true
+    extension: "json"
+    format: "json"
+    slug: "{{slug}}"
+    fields:
+      - { name: "title", label: "Title", widget: "string" }
+      - { name: "type", label: "Type", widget: "string" }
+      - { name: "year", label: "Year", widget: "number", value_type: "int" }
+      - { name: "coverImage", label: "Cover Image", widget: "image" }
+      - { name: "caption", label: "Caption", widget: "string" }
+      - { name: "label", label: "Label", widget: "string", required: false }
+      - { name: "catalogNumber", label: "Catalog Number", widget: "string", required: false }
+      - { name: "link", label: "Listen/Buy Link", widget: "string", required: false }
   - name: "settings"
     label: "Settings"
+    editor:
+      preview: false
     files:
       - name: "site"
         label: "Site"

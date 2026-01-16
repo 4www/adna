@@ -43,7 +43,18 @@ export interface Album {
   year: number;
   coverImage: string;
   caption: string;
-  link: string;
+  link?: string;
+}
+
+export interface Single {
+  title: string;
+  type: string;
+  year: number;
+  coverImage: string;
+  caption: string;
+  label?: string;
+  catalogNumber?: string;
+  link?: string;
 }
 
 const contentRoot = path.join(process.cwd(), "content");
@@ -106,4 +117,18 @@ export const getAlbums = async (): Promise<Album[]> => {
   );
 
   return albums.sort((a, b) => b.year - a.year);
+};
+
+export const getSingles = async (): Promise<Single[]> => {
+  const singlesDir = path.join(contentRoot, "singles");
+  const entries = await fs.readdir(singlesDir, { withFileTypes: true });
+  const singleFiles = entries
+    .filter((entry) => entry.isFile() && entry.name.endsWith(".json"))
+    .map((entry) => entry.name);
+
+  const singles = await Promise.all(
+    singleFiles.map((file) => readJson<Single>(path.join("singles", file)))
+  );
+
+  return singles.sort((a, b) => b.year - a.year);
 };
