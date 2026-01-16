@@ -1,6 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
+import Link from "next/link";
 import Navigation from "./Navigation";
 import type { NavigationItem } from "@/lib/content";
 import styles from "./Header.module.scss";
@@ -71,7 +72,9 @@ const Header = ({ logoText, navigationItems }: HeaderProps) => {
     <header className={`${styles.header} ${isScrolled ? styles.scrolled : ""}`}>
       <div className={styles.container}>
         <div className={styles.logo} style={logoStyle}>
-          <h1 style={{ fontSize: `${fontSize}rem` }}>{logoText}</h1>
+          <h1 style={{ fontSize: `${fontSize}rem` }}>
+            <Link href="/">{logoText}</Link>
+          </h1>
         </div>
         <Navigation
           isScrolled={isScrolled}
