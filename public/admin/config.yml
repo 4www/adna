@@ -9,6 +9,7 @@ collections:
   - name: "pages"
     label: "Pages"
     label_singular: "Page"
+    description: "Edit core page content and background images."
     editor:
       preview: false
     folder: "content/pages"
@@ -17,15 +18,17 @@ collections:
     format: "json"
     slug: "{{slug}}"
     fields:
-      - { name: "title", label: "Title", widget: "string" }
-      - { name: "backgroundImage", label: "Background Image", widget: "image" }
+      - { name: "title", label: "Title", widget: "string", hint: "Page title shown on the page." }
+      - { name: "backgroundImage", label: "Background Image", widget: "image", hint: "Full-page background image." }
       - label: "Body"
         name: "body"
         widget: "list"
-        field: { name: "line", label: "Line", widget: "string" }
+        hint: "Each entry renders as a paragraph."
+        field: { name: "line", label: "Line", widget: "string", hint: "One line of text." }
   - name: "shows"
     label: "Shows"
     label_singular: "Show"
+    description: "Upcoming live shows and ticket links."
     editor:
       preview: false
     folder: "content/shows"
@@ -34,16 +37,17 @@ collections:
     format: "json"
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      - { name: "date", label: "Date", widget: "datetime", time_format: false }
-      - { name: "venue", label: "Venue", widget: "string" }
-      - { name: "note", label: "Note", widget: "string", required: false }
-      - { name: "location", label: "Location", widget: "string" }
-      - { name: "ticketsUrl", label: "Tickets URL", widget: "string" }
-      - { name: "ticketsLabel", label: "Tickets Label", widget: "string" }
-      - { name: "soldOut", label: "Sold Out", widget: "boolean", required: false }
+      - { name: "date", label: "Date", widget: "datetime", time_format: false, hint: "Show date (YYYY-MM-DD)." }
+      - { name: "venue", label: "Venue", widget: "string", hint: "Venue name." }
+      - { name: "note", label: "Note", widget: "string", required: false, hint: "Optional subtitle or tour note." }
+      - { name: "location", label: "Location", widget: "string", hint: "City, region, country." }
+      - { name: "ticketsUrl", label: "Tickets URL", widget: "string", hint: "Link to buy tickets." }
+      - { name: "ticketsLabel", label: "Tickets Label", widget: "string", hint: "Button label, e.g. Tickets." }
+      - { name: "soldOut", label: "Sold Out", widget: "boolean", required: false, hint: "Toggle when tickets are sold out." }
   - name: "albums"
     label: "Albums"
     label_singular: "Album"
+    description: "Albums displayed on the music page."
     editor:
       preview: false
     folder: "content/albums"
@@ -52,15 +56,16 @@ collections:
     format: "json"
     slug: "{{slug}}"
     fields:
-      - { name: "title", label: "Title", widget: "string" }
-      - { name: "type", label: "Type", widget: "string" }
-      - { name: "year", label: "Year", widget: "number", value_type: "int" }
-      - { name: "coverImage", label: "Cover Image", widget: "image" }
-      - { name: "caption", label: "Caption", widget: "string" }
-      - { name: "link", label: "Listen/Buy Link", widget: "string", required: false }
+      - { name: "title", label: "Title", widget: "string", hint: "Release title." }
+      - { name: "type", label: "Type", widget: "string", hint: "Album, EP, Single, etc." }
+      - { name: "year", label: "Year", widget: "number", value_type: "int", hint: "Release year (YYYY)." }
+      - { name: "coverImage", label: "Cover Image", widget: "image", hint: "Cover art image." }
+      - { name: "caption", label: "Caption", widget: "string", hint: "Caption shown under the cover." }
+      - { name: "link", label: "Listen/Buy Link", widget: "string", required: false, hint: "Optional streaming or store link." }
   - name: "singles"
     label: "Singles & EPs"
     label_singular: "Single/EP"
+    description: "Singles and EP releases displayed on the music page."
     editor:
       preview: false
     folder: "content/singles"
@@ -69,17 +74,18 @@ collections:
     format: "json"
     slug: "{{slug}}"
     fields:
-      - { name: "title", label: "Title", widget: "string" }
-      - { name: "type", label: "Type", widget: "string" }
-      - { name: "year", label: "Year", widget: "number", value_type: "int" }
-      - { name: "coverImage", label: "Cover Image", widget: "image" }
-      - { name: "caption", label: "Caption", widget: "string" }
-      - { name: "label", label: "Label", widget: "string", required: false }
-      - { name: "catalogNumber", label: "Catalog Number", widget: "string", required: false }
-      - { name: "link", label: "Listen/Buy Link", widget: "string", required: false }
+      - { name: "title", label: "Title", widget: "string", hint: "Release title." }
+      - { name: "type", label: "Type", widget: "string", hint: "EP, Single, etc." }
+      - { name: "year", label: "Year", widget: "number", value_type: "int", hint: "Release year (YYYY)." }
+      - { name: "coverImage", label: "Cover Image", widget: "image", hint: "Cover art image." }
+      - { name: "caption", label: "Caption", widget: "string", hint: "Caption shown under the cover." }
+      - { name: "label", label: "Label", widget: "string", required: false, hint: "Label name (optional)." }
+      - { name: "catalogNumber", label: "Catalog Number", widget: "string", required: false, hint: "Catalog number (optional)." }
+      - { name: "link", label: "Listen/Buy Link", widget: "string", required: false, hint: "Optional streaming or store link." }
   - name: "contacts"
     label: "Contacts"
     label_singular: "Contact"
+    description: "Contact blocks shown on the contact page."
     editor:
       preview: false
     folder: "content/contacts"
@@ -88,11 +94,12 @@ collections:
     format: "json"
     slug: "{{slug}}"
     fields:
-      - { name: "category", label: "Category", widget: "string" }
-      - { name: "email", label: "Email", widget: "string" }
-      - { name: "buttonLabel", label: "Button Label", widget: "string" }
+      - { name: "category", label: "Category", widget: "string", hint: "Booking, Management, General, etc." }
+      - { name: "email", label: "Email", widget: "string", hint: "Email address to contact." }
+      - { name: "buttonLabel", label: "Button Label", widget: "string", hint: "Button text, e.g. Contact Now." }
   - name: "settings"
     label: "Settings"
+    description: "Global site and navigation settings."
     editor:
       preview: false
     files:
@@ -100,11 +107,11 @@ collections:
         label: "Site"
         file: "content/settings/site.json"
         fields:
-          - { name: "siteName", label: "Site Name", widget: "string" }
-          - { name: "title", label: "SEO Title", widget: "string" }
-          - { name: "description", label: "SEO Description", widget: "text" }
-          - { name: "logoText", label: "Logo Text", widget: "string" }
-          - { name: "footerText", label: "Footer Text", widget: "string" }
+          - { name: "siteName", label: "Site Name", widget: "string", hint: "Internal site name." }
+          - { name: "title", label: "SEO Title", widget: "string", hint: "Used for the page title tag." }
+          - { name: "description", label: "SEO Description", widget: "text", hint: "Used for the meta description." }
+          - { name: "logoText", label: "Logo Text", widget: "string", hint: "Header logo text." }
+          - { name: "footerText", label: "Footer Text", widget: "string", hint: "Footer copyright or label." }
       - name: "navigation"
         label: "Navigation"
         file: "content/settings/navigation.json"
@@ -112,10 +119,11 @@ collections:
           - name: "items"
             label: "Items"
             widget: "list"
+            hint: "Add navigation items in display order."
             fields:
-              - { name: "label", label: "Label", widget: "string" }
-              - { name: "href", label: "Href", widget: "string" }
-              - { name: "order", label: "Order", widget: "number", value_type: "int" }
+              - { name: "label", label: "Label", widget: "string", hint: "Link text." }
+              - { name: "href", label: "Href", widget: "string", hint: "Path like /shows." }
+              - { name: "order", label: "Order", widget: "number", value_type: "int", hint: "Sort order (lower first)." }
       - name: "social-links"
         label: "Social Links"
         file: "content/settings/social-links.json"
@@ -123,10 +131,12 @@ collections:
           - name: "links"
             label: "Links"
             widget: "list"
+            hint: "Add social platforms in display order."
             fields:
               - name: "platform"
                 label: "Platform"
                 widget: "select"
+                hint: "Select a supported platform."
                 options:
                   - "spotify"
                   - "facebook"
@@ -136,5 +146,5 @@ collections:
                   - "tidal"
                   - "soundcloud"
                   - "youtube"
-              - { name: "label", label: "Label", widget: "string" }
-              - { name: "url", label: "URL", widget: "string" }
+              - { name: "label", label: "Label", widget: "string", hint: "Accessible label for the link." }
+              - { name: "url", label: "URL", widget: "string", hint: "Full URL to the profile." }
