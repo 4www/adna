@@ -11,8 +11,8 @@ export interface SiteSettings {
 
 export interface NavigationItem {
   label: string;
-  href: string;
-  order?: number;
+  page?: string;
+  href?: string;
 }
 
 export interface SocialLink {
@@ -80,9 +80,14 @@ export const getNavigation = async (): Promise<NavigationItem[]> => {
     "settings/navigation.json"
   );
 
-  return [...data.items].sort(
-    (a, b) => (a.order ?? 0) - (b.order ?? 0)
-  );
+  const resolved = data.items.map((item) => ({
+    ...item,
+    href:
+      item.href ??
+      (item.page === "home" ? "/" : item.page ? `/${item.page}` : "/"),
+  }));
+
+  return resolved;
 };
 
 export const getSocialLinks = async (): Promise<SocialLink[]> => {

@@ -3,6 +3,9 @@ import PageLayout from "@/components/common/PageLayout";
 import { getAlbums, getPageContent, getSingles } from "@/lib/content";
 import styles from "./Music.module.scss";
 
+const formatReleaseMeta = (type: string, year: number) =>
+  `${type} (${year})`;
+
 export default async function Music() {
   const [content, albums, singles] = await Promise.all([
     getPageContent("music"),
@@ -37,10 +40,9 @@ export default async function Music() {
                     alt={album.caption}
                   />
                 )}
-                <div className={styles.music__caption}>{album.caption}</div>
+                <div className={styles.music__caption}>{album.title}</div>
                 <div className={styles.music__meta}>
-                  <span>{album.type}</span>
-                  <span>{album.year}</span>
+                  {formatReleaseMeta(album.type, album.year)}
                 </div>
               </li>
             ))}
@@ -66,10 +68,9 @@ export default async function Music() {
                     alt={single.caption}
                   />
                 )}
-                <div className={styles.music__caption}>{single.caption}</div>
+                <div className={styles.music__caption}>{single.title}</div>
                 <div className={styles.music__meta}>
-                  <span>{single.type}</span>
-                  <span>{single.year}</span>
+                  {formatReleaseMeta(single.type, single.year)}
                 </div>
               </li>
             ))}

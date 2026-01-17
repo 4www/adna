@@ -12,12 +12,14 @@ collections:
     description: "Edit core page content and background images."
     editor:
       preview: false
+    summary: "{{title}} — {{slug}}"
     folder: "content/pages"
     create: false
     extension: "json"
     format: "json"
     slug: "{{slug}}"
     fields:
+      - { name: "slug", label: "Slug", widget: "hidden", default: "{{slug}}", hint: "Page slug used for URLs.", required: true }
       - { name: "title", label: "Title", widget: "string", hint: "Page title shown on the page." }
       - { name: "backgroundImage", label: "Background Image", widget: "image", hint: "Full-page background image." }
       - label: "Body"
@@ -87,6 +89,7 @@ collections:
     description: "Contact blocks shown on the contact page."
     editor:
       preview: false
+    summary: "{{category}} - {{email}}"
     folder: "content/contacts"
     create: true
     extension: "json"
@@ -121,8 +124,14 @@ collections:
             hint: "Add navigation items in display order."
             fields:
               - { name: "label", label: "Label", widget: "string", hint: "Link text." }
-              - { name: "href", label: "Href", widget: "string", hint: "Path like /shows." }
-              - { name: "order", label: "Order", widget: "number", value_type: "int", hint: "Sort order (lower first)." }
+              - name: "page"
+                label: "Page"
+                widget: "relation"
+                hint: "Select a page from the Pages collection."
+                collection: "pages"
+                search_fields: ["title", "slug"]
+                value_field: "slug"
+                display_fields: ["title"]
       - name: "social-links"
         label: "Social Links"
         file: "content/settings/social-links.json"

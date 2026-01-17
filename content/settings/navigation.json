@@ -2,28 +2,23 @@
   "items": [
     {
       "label": "Home",
-      "href": "/",
-      "order": 1
+      "page": "home"
     },
     {
       "label": "Music",
-      "href": "/music",
-      "order": 2
+      "page": "music"
     },
     {
       "label": "Shows",
-      "href": "/shows",
-      "order": 3
+      "page": "shows"
     },
     {
       "label": "Contact",
-      "href": "/contact",
-      "order": 4
+      "page": "contact"
     },
     {
       "label": "Newsletter",
-      "href": "/newsletter",
-      "order": 5
+      "page": "newsletter"
     }
   ]
 }
