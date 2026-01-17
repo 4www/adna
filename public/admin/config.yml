@@ -154,5 +154,6 @@ collections:
                   - "tidal"
                   - "soundcloud"
                   - "youtube"
+                  - "discogs"
               - { name: "label", label: "Label", widget: "string", hint: "Accessible label for the link." }
               - { name: "url", label: "URL", widget: "string", hint: "Full URL to the profile." }

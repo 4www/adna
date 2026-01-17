@@ -39,6 +39,11 @@
       "platform": "youtube",
       "label": "YouTube",
       "url": "https://www.youtube.com/@adna_music"
+    },
+    {
+      "platform": "discogs",
+      "label": "Discogs",
+      "url": "https://www.discogs.com/artist/4076002-Adna-Kadic"
     }
   ]
 }
