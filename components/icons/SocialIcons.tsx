@@ -231,6 +231,29 @@ export const DiscogsIcon = ({
   </svg>
 );
 
+export const BandcampIcon = ({
+  size = 24,
+  color = 'white',
+  backgroundColor = 'transparent',
+  className = 'icon',
+}: IconProps) => (
+  <svg
+    role="img"
+    viewBox="0 0 496 512"
+    width={size}
+    height={size}
+    fill={color}
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+    style={{ backgroundColor }}
+  >
+    <title>Bandcamp</title>
+    {/* Source: https://commons.wikimedia.org/wiki/Category:SVG_logos_of_Bandcamp */}
+    {/* Font Awesome Free 5.4.1 - https://fontawesome.com/license/free */}
+    <path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm48.2 326.1h-181L199.9 178h181l-84.7 156.1z" />
+  </svg>
+);
+
 export const socialIconNames = [
   "spotify",
   "facebook",
@@ -242,6 +265,7 @@ export const socialIconNames = [
   "soundcloud",
   "youtube",
   "discogs",
+  "bandcamp",
 ] as const;
 
 export type SocialIconName = (typeof socialIconNames)[number];
@@ -259,6 +283,7 @@ const iconMap: Record<SocialIconName, IconComponent> = {
   soundcloud: SoundCloudIcon,
   youtube: YouTubeIcon,
   discogs: DiscogsIcon,
+  bandcamp: BandcampIcon,
 };
 
 export const isSocialIconName = (value: string): value is SocialIconName =>
