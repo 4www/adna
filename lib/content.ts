@@ -24,7 +24,7 @@ export interface SocialLink {
 export interface PageContent {
   title: string;
   backgroundImage: string;
-  body?: string[];
+  body?: string;
 }
 
 export interface Show {

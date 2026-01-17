@@ -1,4 +1,5 @@
 import PageLayout from "@/components/common/PageLayout";
+import Markdown from "@/components/common/Markdown";
 import SocialLinks from "@/components/common/SocialLinks";
 import { getContacts, getPageContent } from "@/lib/content";
 import styles from "./Contact.module.scss";
@@ -14,9 +15,7 @@ export default async function Contact() {
       <div className={styles.contact}>
         <header>
           <h1>{content.title}</h1>
-          {content.body?.map((line, index) => (
-            <p key={`${index}-${line}`}>{line}</p>
-          ))}
+          {content.body ? <Markdown content={content.body} /> : null}
         </header>
         <ul className={styles.contact__list}>
           {contacts.map((contact) => (

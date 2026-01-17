@@ -1,7 +1,5 @@
 {
   "title": "Contact",
   "backgroundImage": "/images/contact-bg.png",
-  "body": [
-    "Get in touch"
-  ]
+  "body": "Get in touch"
 }

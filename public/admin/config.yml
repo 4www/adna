@@ -22,9 +22,8 @@ collections:
       - { name: "backgroundImage", label: "Background Image", widget: "image", hint: "Full-page background image." }
       - label: "Body"
         name: "body"
-        widget: "list"
-        hint: "Each entry renders as a paragraph."
-        field: { name: "line", label: "Line", widget: "string", hint: "One line of text." }
+        widget: "markdown"
+        hint: "Markdown content rendered on the page."
   - name: "shows"
     label: "Shows"
     label_singular: "Show"

@@ -1,3 +1,4 @@
+import Markdown from "@/components/common/Markdown";
 import PageLayout from "@/components/common/PageLayout";
 import { getPageContent, getShows } from "@/lib/content";
 import styles from "./Shows.module.scss";
@@ -27,11 +28,9 @@ export default async function Shows() {
     <PageLayout backgroundImage={content.backgroundImage}>
       <header className={styles["shows__header"]}>
         <h1 className={styles["shows__title"]}>{content.title}</h1>
-        {content.body?.map((line, index) => (
-          <p key={`${index}-${line}`} className={styles["shows__intro"]}>
-            {line}
-          </p>
-        ))}
+        {content.body ? (
+          <Markdown content={content.body} className={styles["shows__intro"]} />
+        ) : null}
       </header>
       <ul className={styles.shows}>
         {shows.map((show) => (

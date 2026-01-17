@@ -1,7 +1,5 @@
 {
   "title": "Music",
   "backgroundImage": "/images/music-bg.png",
-  "body": [
-    "Explore the discography"
-  ]
+  "body": "Explore the discography"
 }

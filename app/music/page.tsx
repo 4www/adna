@@ -1,3 +1,4 @@
+import Markdown from "@/components/common/Markdown";
 import PageLayout from "@/components/common/PageLayout";
 import { getAlbums, getPageContent, getSingles } from "@/lib/content";
 import styles from "./Music.module.scss";
@@ -14,9 +15,7 @@ export default async function Music() {
       <div className={styles.music}>
         <header>
           <h1 className={styles.music__heading}>{content.title}</h1>
-          {content.body?.map((line, index) => (
-            <p key={`${index}-${line}`}>{line}</p>
-          ))}
+          {content.body ? <Markdown content={content.body} /> : null}
         </header>
         <section className={styles.music__section}>
           <h2 className={styles.music__heading}>Albums</h2>
