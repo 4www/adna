@@ -46,40 +46,25 @@ collections:
       - { name: "ticketsUrl", label: "Tickets URL", widget: "string", hint: "Link to buy tickets." }
       - { name: "ticketsLabel", label: "Tickets Label", widget: "string", hint: "Button label, e.g. Tickets." }
       - { name: "soldOut", label: "Sold Out", widget: "boolean", required: false, hint: "Toggle when tickets are sold out." }
-  - name: "albums"
-    label: "Albums"
-    label_singular: "Album"
-    description: "Albums displayed on the music page."
+  - name: "releases"
+    label: "Releases"
+    label_singular: "Release"
+    description: "Albums, singles, and EPs displayed on the music page."
     editor:
       preview: false
     summary: "{{year}} - {{type}} - {{title}}"
-    folder: "content/albums"
+    folder: "content/releases"
     create: true
     extension: "json"
     format: "json"
     slug: "{{slug}}"
     fields:
       - { name: "title", label: "Title", widget: "string", hint: "Release title." }
-      - { name: "type", label: "Type", widget: "string", hint: "Album, EP, Single, etc." }
-      - { name: "year", label: "Year", widget: "number", value_type: "int", hint: "Release year (YYYY)." }
-      - { name: "coverImage", label: "Cover Image", widget: "image", hint: "Cover art image." }
-      - { name: "caption", label: "Caption", widget: "string", hint: "Caption shown under the cover." }
-      - { name: "link", label: "Listen/Buy Link", widget: "string", required: false, hint: "Optional streaming or store link." }
-  - name: "singles"
-    label: "Singles & EPs"
-    label_singular: "Single/EP"
-    description: "Singles and EP releases displayed on the music page."
-    editor:
-      preview: false
-    summary: "{{year}} - {{type}} - {{title}}"
-    folder: "content/singles"
-    create: true
-    extension: "json"
-    format: "json"
-    slug: "{{slug}}"
-    fields:
-      - { name: "title", label: "Title", widget: "string", hint: "Release title." }
-      - { name: "type", label: "Type", widget: "string", hint: "EP, Single, etc." }
+      - name: "type"
+        label: "Type"
+        widget: "select"
+        hint: "Release type."
+        options: ["album", "single", "ep"]
       - { name: "year", label: "Year", widget: "number", value_type: "int", hint: "Release year (YYYY)." }
       - { name: "coverImage", label: "Cover Image", widget: "image", hint: "Cover art image." }
       - { name: "caption", label: "Caption", widget: "string", hint: "Caption shown under the cover." }

@@ -1,17 +1,19 @@
 import Markdown from "@/components/common/Markdown";
 import PageLayout from "@/components/common/PageLayout";
-import { getAlbums, getPageContent, getSingles } from "@/lib/content";
+import { getPageContent, getReleases } from "@/lib/content";
 import styles from "./Music.module.scss";
 
 const formatReleaseMeta = (type: string, year: number) =>
   `${type} (${year})`;
 
 export default async function Music() {
-  const [content, albums, singles] = await Promise.all([
+  const [content, releases] = await Promise.all([
     getPageContent("music"),
-    getAlbums(),
-    getSingles(),
+    getReleases(),
   ]);
+
+  const albums = releases.filter((release) => release.type === "album");
+  const singles = releases.filter((release) => release.type !== "album");
 
   return (
     <PageLayout backgroundImage={content.backgroundImage}>
@@ -48,34 +50,36 @@ export default async function Music() {
             ))}
           </ul>
         </section>
-        <section className={styles.music__section}>
-          <h2 className={styles.music__heading}>Singles & EPs</h2>
-          <ul className={styles.music__grid}>
-            {singles.map((single) => (
-              <li key={`${single.title}-${single.year}`} className={styles.music__item}>
-                {single.link ? (
-                  <a href={single.link} target="_blank" rel="noopener noreferrer">
+        {singles.length > 0 ? (
+          <section className={styles.music__section}>
+            <h2 className={styles.music__heading}>Singles & EPs</h2>
+            <ul className={styles.music__grid}>
+              {singles.map((single) => (
+                <li key={`${single.title}-${single.year}`} className={styles.music__item}>
+                  {single.link ? (
+                    <a href={single.link} target="_blank" rel="noopener noreferrer">
+                      <img
+                        className={styles.music__cover}
+                        src={single.coverImage}
+                        alt={single.caption}
+                      />
+                    </a>
+                  ) : (
                     <img
                       className={styles.music__cover}
                       src={single.coverImage}
                       alt={single.caption}
                     />
-                  </a>
-                ) : (
-                  <img
-                    className={styles.music__cover}
-                    src={single.coverImage}
-                    alt={single.caption}
-                  />
-                )}
-                <div className={styles.music__caption}>{single.title}</div>
-                <div className={styles.music__meta}>
-                  {formatReleaseMeta(single.type, single.year)}
-                </div>
-              </li>
-            ))}
-          </ul>
-        </section>
+                  )}
+                  <div className={styles.music__caption}>{single.title}</div>
+                  <div className={styles.music__meta}>
+                    {formatReleaseMeta(single.type, single.year)}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null}
       </div>
     </PageLayout>
   );

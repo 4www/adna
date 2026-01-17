@@ -33,24 +33,15 @@ export interface Show {
   soldOut?: boolean;
 }
 
-export interface Album {
+export interface Release {
   title: string;
-  type: string;
+  type: "album" | "single" | "ep";
   year: number;
   coverImage: string;
   caption: string;
   link?: string;
-}
-
-export interface Single {
-  title: string;
-  type: string;
-  year: number;
-  coverImage: string;
-  caption: string;
   label?: string;
   catalogNumber?: string;
-  link?: string;
 }
 
 export interface Contact {
@@ -116,32 +107,18 @@ export const getShows = async (): Promise<Show[]> => {
   return shows.sort((a, b) => a.date.localeCompare(b.date));
 };
 
-export const getAlbums = async (): Promise<Album[]> => {
-  const albumsDir = path.join(contentRoot, "albums");
-  const entries = await fs.readdir(albumsDir, { withFileTypes: true });
-  const albumFiles = entries
+export const getReleases = async (): Promise<Release[]> => {
+  const releasesDir = path.join(contentRoot, "releases");
+  const entries = await fs.readdir(releasesDir, { withFileTypes: true });
+  const releaseFiles = entries
     .filter((entry) => entry.isFile() && entry.name.endsWith(".json"))
     .map((entry) => entry.name);
 
-  const albums = await Promise.all(
-    albumFiles.map((file) => readJson<Album>(path.join("albums", file)))
+  const releases = await Promise.all(
+    releaseFiles.map((file) => readJson<Release>(path.join("releases", file)))
   );
 
-  return albums.sort((a, b) => b.year - a.year);
-};
-
-export const getSingles = async (): Promise<Single[]> => {
-  const singlesDir = path.join(contentRoot, "singles");
-  const entries = await fs.readdir(singlesDir, { withFileTypes: true });
-  const singleFiles = entries
-    .filter((entry) => entry.isFile() && entry.name.endsWith(".json"))
-    .map((entry) => entry.name);
-
-  const singles = await Promise.all(
-    singleFiles.map((file) => readJson<Single>(path.join("singles", file)))
-  );
-
-  return singles.sort((a, b) => b.year - a.year);
+  return releases.sort((a, b) => b.year - a.year);
 };
 
 export const getContacts = async (): Promise<Contact[]> => {
