@@ -10,6 +10,9 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: siteSettings.title,
     description: siteSettings.description,
+    icons: {
+      icon: "/favicon.ico",
+    },
   };
 }
 
