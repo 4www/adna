@@ -15,11 +15,9 @@ export default async function Music() {
     getReleases(),
   ]);
 
-  const albums = releases.filter(
-    (release) => release.release_type === "album"
-  );
+  const albums = releases.filter((release) => release.release_type === "album");
   const singles = releases.filter(
-    (release) => release.release_type !== "album"
+    (release) => release.release_type !== "album",
   );
 
   return (
@@ -33,9 +31,13 @@ export default async function Music() {
           <h2 className={styles.music__heading}>Albums</h2>
           <ul className={styles.music__grid}>
             {albums.map((album) => (
-              <li key={`${album.title}-${album.year}`} className={styles.music__item}>
+              <li key={`${album.title}`} className={styles.music__item}>
                 {album.link ? (
-                  <a href={album.link} target="_blank" rel="noopener noreferrer">
+                  <a
+                    href={album.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <img
                       className={styles.music__cover}
                       src={album.coverImage}
@@ -62,9 +64,13 @@ export default async function Music() {
             <h2 className={styles.music__heading}>Singles & EPs</h2>
             <ul className={styles.music__grid}>
               {singles.map((single) => (
-                <li key={`${single.title}-${single.year}`} className={styles.music__item}>
+                <li key={`${single.title}`} className={styles.music__item}>
                   {single.link ? (
-                    <a href={single.link} target="_blank" rel="noopener noreferrer">
+                    <a
+                      href={single.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <img
                         className={styles.music__cover}
                         src={single.coverImage}

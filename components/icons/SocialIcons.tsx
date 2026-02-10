@@ -1,3 +1,5 @@
+import { JSX } from "react";
+
 export interface IconProps {
   size?: number;
   color?: string;
@@ -7,9 +9,9 @@ export interface IconProps {
 
 export const SpotifyIcon = ({
   size = 24,
-  color = 'white',
-  backgroundColor = 'transparent',
-  className = 'icon',
+  color = "white",
+  backgroundColor = "transparent",
+  className = "icon",
 }: IconProps) => (
   <svg
     role="img"
@@ -30,9 +32,9 @@ export const SpotifyIcon = ({
 
 export const FacebookIcon = ({
   size = 24,
-  color = 'white',
-  backgroundColor = 'transparent',
-  className = 'icon',
+  color = "white",
+  backgroundColor = "transparent",
+  className = "icon",
 }: IconProps) => (
   <svg
     role="img"
@@ -53,9 +55,9 @@ export const FacebookIcon = ({
 
 export const InstagramIcon = ({
   size = 24,
-  color = 'white',
-  backgroundColor = 'transparent',
-  className = 'icon',
+  color = "white",
+  backgroundColor = "transparent",
+  className = "icon",
 }: IconProps) => (
   <svg
     role="img"
@@ -76,9 +78,9 @@ export const InstagramIcon = ({
 
 export const TikTokIcon = ({
   size = 24,
-  color = 'white',
-  backgroundColor = 'transparent',
-  className = 'icon',
+  color = "white",
+  backgroundColor = "transparent",
+  className = "icon",
 }: IconProps) => (
   <svg
     role="img"
@@ -99,9 +101,9 @@ export const TikTokIcon = ({
 
 export const AppleMusicIcon = ({
   size = 24,
-  color = 'white',
-  backgroundColor = 'transparent',
-  className = 'icon',
+  color = "white",
+  backgroundColor = "transparent",
+  className = "icon",
 }: IconProps) => (
   <svg
     role="img"
@@ -122,9 +124,9 @@ export const AppleMusicIcon = ({
 
 export const TidalIcon = ({
   size = 24,
-  color = 'white',
-  backgroundColor = 'transparent',
-  className = 'icon',
+  color = "white",
+  backgroundColor = "transparent",
+  className = "icon",
 }: IconProps) => (
   <svg
     role="img"
@@ -145,9 +147,9 @@ export const TidalIcon = ({
 
 export const SoundCloudIcon = ({
   size = 24,
-  color = 'white',
-  backgroundColor = 'transparent',
-  className = 'icon',
+  color = "white",
+  backgroundColor = "transparent",
+  className = "icon",
 }: IconProps) => (
   <svg
     role="img"
@@ -168,9 +170,9 @@ export const SoundCloudIcon = ({
 
 export const YouTubeIcon = ({
   size = 24,
-  color = 'white',
-  backgroundColor = 'transparent',
-  className = 'icon',
+  color = "white",
+  backgroundColor = "transparent",
+  className = "icon",
 }: IconProps) => (
   <svg
     role="img"
@@ -191,9 +193,9 @@ export const YouTubeIcon = ({
 
 export const DiscogsIcon = ({
   size = 24,
-  color = 'white',
-  backgroundColor = 'transparent',
-  className = 'icon',
+  color = "white",
+  backgroundColor = "transparent",
+  className = "icon",
 }: IconProps) => (
   <svg
     role="img"
@@ -233,9 +235,9 @@ export const DiscogsIcon = ({
 
 export const BandcampIcon = ({
   size = 24,
-  color = 'white',
-  backgroundColor = 'transparent',
-  className = 'icon',
+  color = "white",
+  backgroundColor = "transparent",
+  className = "icon",
 }: IconProps) => (
   <svg
     role="img"

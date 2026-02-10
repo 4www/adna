@@ -71,8 +71,11 @@ const Navigation = ({
       >
         <ul className={styles.navList} onClick={(e) => e.stopPropagation()}>
           {items.map((item, index) => (
-            <li key={`${item.href}-${item.label}`} style={{ animationDelay: `${(index + 1) * 0.1}s` }}>
-              <Link href={item.href} onClick={closeMenu}>
+            <li
+              key={`${item.href}-${item.label}`}
+              style={{ animationDelay: `${(index + 1) * 0.1}s` }}
+            >
+              <Link href={item.href as string} onClick={closeMenu}>
                 {item.label}
               </Link>
             </li>
