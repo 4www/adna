@@ -17,7 +17,7 @@ adna/
 │   ├── layout.tsx         # Root layout with Header/Footer
 │   ├── page.tsx           # Home page
 │   ├── music/page.tsx
-│   ├── tours/page.tsx
+│   ├── shows/page.tsx
 │   ├── contact/page.tsx
 │   └── newsletter/page.tsx
 ├── components/
@@ -81,15 +81,15 @@ adna/
 - ✅ Header/navigation fully functional
 - ✅ Social icons implemented (8 icons: Spotify, Facebook, Instagram, TikTok, Apple Music, Tidal, SoundCloud, YouTube)
 - ⏳ Headless CMS integration - Next step
-- ⏳ Actual content for pages (Music player, tour dates, forms)
+- ⏳ Actual content for pages (Music player, shows, forms)
 - ⏳ Zustand state management - Not yet implemented
 
 ## Next Steps
 
 1. Integrate Sanity CMS
-2. Create content schemas (Albums, Tours, etc.)
+2. Create content schemas (Albums, Shows, etc.)
 3. Build Music page with discography
-4. Build Tours page with dates
+4. Build Shows page with dates
 5. Build Contact form
 6. Build Newsletter signup
 
